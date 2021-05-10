@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title th:text="${titulo}"></title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+</head>
+
+<body>
+	<h3 th:text="${titulo}"></h3>
+<div class="container">
+	<ul class="list-group">
+		<li class="list-group-item" th:text="${user.id}"></li>
+		<li class="list-group-item" th:text="${user.nombre}"></li>
+		<li class="list-group-item" th:text="${user.apellido}"></li>
+		<li class="list-group-item" th:text="${user.username}"></li>
+		<li class="list-group-item" th:text="${user.password}"></li>
+		<li class="list-group-item" th:text="${user.email}"></li>
+		<li class="list-group-item" th:text="${user.cuenta}"></li>
+		<li class="list-group-item" th:text="${user.pais.nombre}"></li>
+		<li class="list-group-item" th:text="${#dates.format(user.fechaNacimiento, 'dd/MM/yyyy')}"></li>
+		<li class="list-group-item" th:text="'Habilitado: ' + ${user.habilitar}"></li>
+		<li class="list-group-item" th:text="'Genero: ' + ${user.genero}"></li>
+		<li class="list-group-item" th:text="'Valor oculto: ' + ${user.valorSecreto}"></li>
+	</ul>
+	
+	<div>Roles</div>
+	<ul class="list-group">
+		<li class="list-group-item" th:each="role: ${user.roles}" th:text="${role.id} + ' - ' + ${role.nombre} + ' - ' + ${role.role}"></li>
+	</ul>
+</div>
+</body>
+
+</html>
